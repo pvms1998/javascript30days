@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Reference VS Copy</title>
+</head>
+<body>
+<script>
+ // start string , numbers , booleans
+    let age = 100;
+    let age2 = age;
+    console.log(age,age2);
+    let name = "Wes"
+    let name2 = name;
+    console.log(name,name2);
+    name = "Wesday";
+    console.log(name,name2);
+ //Array
+    const players = ["Wes", "Sarah", "Ryan", "Center"];
+    const team = players;
+    // team[3] = 'Lux' thì khi in ra thì players sẽ thay đổi theo
+    
+    
+    const team2 = players.slice();
+
+    const team3 = [].concat(players);
+
+    const team4 = [...players];
+    // team4[3]= 'haha hehe'; thì khi in ra sẽ không thay đổi players
+    
+    const team5 = Array.from(players);
+    // team5[3] = 'haha' thì players cũng sẽ ko thay đổi
+
+    const person = {
+        name: 'Wes Bos',
+        age: 80
+    };
+
+    //const caption = person;
+    //caption.number = '99';
+
+    const cap2 = Object.assign({}, person, {number : '99', age: '12'}); // không thay đổi person
+    
+    const cap3 = {...person}; // không thay đổi person
+    cap3.age = '66';
+
+    const wes = {
+        name: 'Wes',
+        age: 100,
+        socical : {
+            twitter: '@Wesbos',
+            facebook: 'wesbos.developer' 
+        }
+    };
+    const dev = Object.assign({}, wes);
+    const dev2 = JSON.parse(JSON.stringify(wes));
+</script>
+</body>
+</html>
